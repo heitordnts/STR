@@ -9,17 +9,19 @@
 
 
 
-int main ()
+int main (int argc, char**argv)
 {
 
 // declaracao de variaveis
   int i;
   pid_t pid;// definindo um identificador de processo - inteiro longo
    
+  char cmd[64];
   printf("Comecando o programa fork1 ... \n");
   sleep(1);
   printf("Sou o processo Pai \n");
-  system("ps");
+  sprintf(cmd,"ps aux | grep %s",argv[0]);
+  system(cmd);
   
   pid = fork();   // dividindo o processo em dois
 
